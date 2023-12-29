@@ -22,6 +22,15 @@ export const useCartStore = create((set) => ({
         localStorage.removeItem("cart");
         return { cart: [] };
     }),
-    getCart: () => { return useCartStore.getState().cart }
+    getCart: () => { return useCartStore.getState().cart },
+    getItemCount: () => {
+        let cart = useCartStore.getState().cart;
+        let count = 0;
+        cart.forEach(item => {
+            count += item.count;
+        });
+
+        return count;
+    }
 
 }));

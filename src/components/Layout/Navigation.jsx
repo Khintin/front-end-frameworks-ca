@@ -2,9 +2,12 @@ import { Form, Link } from "react-router-dom";
 import Menu from "../../assets/icons8-menu-48.png";
 import { useState } from "react";
 import cart from "../../assets/icons8-cart-65.png";
+import { useCartStore } from "../../api/cart";
 
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { getItemCount } = useCartStore((state) => ({ getItemCount: state.getItemCount }));
 
     const handleMobileMenuClick = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -16,7 +19,7 @@ export default function Navigation() {
                 <div className="max-w-7xl mx-auto flex flex-col text-center px-4 ">
                     <nav className="w-full py-4 flex flex-row justify-between items-center relative">
                         <Link to="/">
-                            <h2 className="font-bold text-xl text-red-400 ">TINDAHAN</h2>
+                            <h2 className="font-bold text-xl text-red-400 ">eStore</h2>
                         </Link>
                         <ul
                             className={`${
@@ -29,12 +32,15 @@ export default function Navigation() {
                             <li className="text-medium font-semibold hover:text-red-400 flex flex-row px justify-end">
                                 <Link to="/contact">CONTACT</Link>
                             </li>
-                            <li className="">
+                            <li className="relative">
+                                <span className="pointer-events-none absolute inset-0 w-full h-full text-white font-bold">
+                                    {getItemCount()}
+                                </span>
                                 <Link to="/checkout">
                                     <img
                                         src={cart}
                                         alt="cart-icon"
-                                        className="pl-1 flex sm:justify-center w-10 hover:animate-bounce"
+                                        className="pl-1 flex sm:justify-center w-10"
                                     />
                                 </Link>
                             </li>

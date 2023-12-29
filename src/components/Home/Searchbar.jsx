@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Searchbar({ products }) {
+export default function Searchbar({ products, onProductsFiltered }) {
     const [searchTerm, setSearchTerm] = useState(null);
     const [matches, setMatches] = useState([]);
 
     useEffect(() => {
-        if (!searchTerm || searchTerm.length == 0) {
+        // Limit search term length to 3, so we don't show too many items at once
+        if (!searchTerm || searchTerm.length < 3) {
             setMatches([]);
+            onProductsFiltered(products);
         } else if (products.length > 0) {
             const list = products.filter((p) => p.title.toLowerCase().indexOf(searchTerm) > -1);
             setMatches(list);
+            onProductsFiltered(list);
         }
     }, [searchTerm]);
 

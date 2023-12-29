@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import ContactImage from "../../assets/contactpix.jpg";
-import HomeAddresIcon from "../../assets/icons8-address-100.png";
-import CallIcon from "../../assets/icons8-call-100.png";
-import ChatIcon from "../../assets/icons8-chat-48.png";
-import FacebookIcon from "../../assets/icons8-facebook-48.png";
-import InstIcon from "../../assets/icons8-instagram-48.png";
+import ContactInfo from "./ContactInfo";
+import Infobox from "../Shared/Infobox";
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -20,6 +16,8 @@ const ContactPage = () => {
         email: "",
         body: "",
     });
+
+    const [success, setSuccess] = useState(false);
 
     const validateForm = () => {
         let valid = true;
@@ -62,34 +60,31 @@ const ContactPage = () => {
         e.preventDefault();
 
         if (validateForm()) {
-            // Perform form submission logic here (e.g., send data to a server)
             console.log("Form submitted:", formData);
+            setSuccess(true);
         } else {
             console.log("Form validation failed");
         }
     };
 
+    if (success) {
+        return (
+            <section className="max-w-4xl w-full mx-auto px-4">
+                <ContactInfo />
+                <Infobox
+                    title="Message sent!"
+                    text="We've received your message. We will get back to you as soon as possible."
+                    type="success"
+                />
+            </section>
+        );
+    }
+
     return (
         <>
-            <section className="my-20">
-                <div className="flex flex-col justify-center">
-                    <img src={ContactImage} className="max-w-lg mx-auto" />
-                    <h2 className="text-lg text-center font-bold">TINDAHAN</h2>
-                    <div className="flex flex-row justify-center">
-                        <img src={HomeAddresIcon} alt="address icon" className="w-9" />
-                        <p>Addres: 123 Street, Oslo, Norway</p>
-                    </div>
-                    <div className="flex flex-row gap-1 justify-center">
-                        <img src={CallIcon} alt="phone icon" className="w-8" />
-                        <p>Phone: +47 12345678</p>
-                    </div>
-                    <div className="flex flex-row justify-center py-5 gap-5">
-                        <img src={FacebookIcon} />
-                        <img src={InstIcon} />
-                        <img src={ChatIcon} />
-                    </div>
-                </div>
-                <div className="max-w-4xl mx-auto mt-8 p-4 bg-slate-300">
+            <section className="max-w-4xl w-full mx-auto px-4">
+                <ContactInfo />
+                <div className="my-8 p-4 bg-slate-300 rounded-md">
                     <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
                     <form
                         onSubmit={handleSubmit}
@@ -191,14 +186,13 @@ const ContactPage = () => {
                         </div>
 
                         <button
-                            type="button"
+                            type="submit"
                             className="col-span-2 border-double border-red-400 border-4 hover:bg-red-400 py-1 px-4"
                         >
                             Submit
                         </button>
                     </form>
                 </div>
-                <p className="max-w-4xl mx-auto text-green-600 my-6">Message Successfully Sent!</p>
             </section>
         </>
     );

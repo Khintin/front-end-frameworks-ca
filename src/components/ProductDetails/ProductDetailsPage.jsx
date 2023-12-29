@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProduct } from "../../api/products";
 import { useCartStore } from "../../api/cart";
+import Review from "../Layout/Review";
 
 export default function ProductDetailsPage() {
     const { addToCart } = useCartStore((state) => ({ addToCart: state.addToCart }));
@@ -22,8 +23,6 @@ export default function ProductDetailsPage() {
                     let discount = (1 - prod.discountedPrice / prod.price) * 100;
                     setDiscountPercentage(Math.floor(discount));
                 }
-
-                console.log(prod);
             } else {
                 setError(true);
             }
@@ -63,6 +62,11 @@ export default function ProductDetailsPage() {
                             Add to Cart
                         </button>
                     </div>
+                </section>
+                <section className="max-w-7xl px-4 mx-auto w-full">
+                    {product.reviews.map((review) => (
+                        <Review review={review} />
+                    ))}
                 </section>
             </>
         );
