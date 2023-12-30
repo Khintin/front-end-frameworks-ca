@@ -1,7 +1,7 @@
 import { Form, Link } from "react-router-dom";
 import Menu from "../../assets/icons8-menu-48.png";
 import { useState } from "react";
-import cart from "../../assets/icons8-cart-65.png";
+import cart from "../../assets/icons8-cart-64.png";
 import { useCartStore } from "../../api/cart";
 
 export default function Navigation() {
@@ -33,14 +33,14 @@ export default function Navigation() {
                                 <Link to="/contact">CONTACT</Link>
                             </li>
                             <li className="relative">
-                                <span className="pointer-events-none absolute inset-0 w-full h-full text-white font-bold">
+                                <span className="pointer-events-none absolute inset-0 w-full h-full pl-2 pt-0.5 text-red-500 font-bold">
                                     {getItemCount()}
                                 </span>
                                 <Link to="/checkout">
                                     <img
                                         src={cart}
                                         alt="cart-icon"
-                                        className="pl-1 flex sm:justify-center w-10"
+                                        className="pl-1 flex sm:justify-center w-11"
                                     />
                                 </Link>
                             </li>

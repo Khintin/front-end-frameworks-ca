@@ -31,13 +31,14 @@ export default function ProductCard({ product }) {
                 <strong>{discountedPrice},-</strong>
             </div>
 
-            <div className="mt-auto flex gap-2 justify-center">
+            <div className="sm:flex-col text-center mt-auto flex gap-2 justify-center">
                 <Link
                     to={`product/${id}`}
                     className="border-double border-red-400 border-4 rounded-lg hover:bg-red-400 py-1 px-4"
                 >
                     View Product
                 </Link>
+
                 <button
                     onClick={() => addToCart(product.id)}
                     type="button"

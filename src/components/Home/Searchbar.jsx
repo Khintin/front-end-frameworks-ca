@@ -6,7 +6,6 @@ export default function Searchbar({ products, onProductsFiltered }) {
     const [matches, setMatches] = useState([]);
 
     useEffect(() => {
-        // Limit search term length to 3, so we don't show too many items at once
         if (!searchTerm || searchTerm.length < 3) {
             setMatches([]);
             onProductsFiltered(products);
