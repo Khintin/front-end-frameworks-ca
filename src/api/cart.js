@@ -4,7 +4,7 @@ export const useCartStore = create((set) => ({
 
     cart: JSON.parse(localStorage.getItem("cart")) || [],
     addToCart: (id) => set((state) => {
-        const duplicate = state.cart.findIndex((entry) => entry.id == id);
+        const duplicate = state.cart.findIndex((entry) => entry.id === id);
 
         if (duplicate !== -1) {
             const newCart = [...state.cart];

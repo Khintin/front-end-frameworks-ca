@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Searchbar({ products, onProductsFiltered }) {
-    const [searchTerm, setSearchTerm] = useState(null);
     const [matches, setMatches] = useState([]);
 
-    useEffect(() => {
+    const onInput = (event) => {
+        let searchTerm = event.target.value.toLowerCase();
+
         if (!searchTerm || searchTerm.length < 3) {
             setMatches([]);
             onProductsFiltered(products);
@@ -14,10 +15,6 @@ export default function Searchbar({ products, onProductsFiltered }) {
             setMatches(list);
             onProductsFiltered(list);
         }
-    }, [searchTerm]);
-
-    const onInput = (event) => {
-        setSearchTerm(event.target.value.toLowerCase());
     };
 
     return (

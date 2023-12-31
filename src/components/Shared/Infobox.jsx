@@ -3,15 +3,15 @@ export default function Infobox({ title, text, type = "info" }) {
     let borderColor = "border-blue-500";
     let textColor = "text-blue-900";
 
-    if (type == "warning") {
+    if (type === "warning") {
         bgColor = "bg-orange-300";
         borderColor = "border-orange-500";
         textColor = "text-orange-900";
-    } else if (type == "error") {
+    } else if (type === "error") {
         bgColor = "bg-red-300";
         borderColor = "border-red-500";
         textColor = "text-red-900";
-    } else if (type == "success") {
+    } else if (type === "success") {
         bgColor = "bg-green-300";
         borderColor = "border-green-500";
         textColor = "text-green-900";

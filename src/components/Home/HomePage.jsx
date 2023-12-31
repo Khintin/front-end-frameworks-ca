@@ -30,8 +30,10 @@ export default function HomePage() {
     };
 
     if (loading) {
+        <h1>Please wait</h1>;
     } else if (error) {
-    } else if (filteredProducts.length == 0) {
+        <h1>Something went wrong, please try again later</h1>;
+    } else if (filteredProducts.length === 0) {
         return (
             <main className="max-w-7xl px-4 mx-auto w-full">
                 <div className="mx-auto flex justify-center md:flex-row md:justify-end gap-3 py-3">

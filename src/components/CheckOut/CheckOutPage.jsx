@@ -12,7 +12,7 @@ const CheckOutPage = () => {
 
     const handlePriceTotal = (e) => {
         _totalPrice += e;
-        setTotalPrice(_totalPrice.toFixed(2));
+        setTotalPrice(parseFloat(_totalPrice).toFixed(2));
     };
 
     return (
@@ -21,7 +21,7 @@ const CheckOutPage = () => {
                 <div className="bg-slate-300 mx-auto py-10 rounded-lg w-full mt-12">
                     <h1 className="text-center text-4xl font-semi-bold">Your Cart</h1>
                     <div className="max-w-7xl mx-auto px-4 mt-24">
-                        {getCart().length == 0 && (
+                        {getCart().length === 0 && (
                             <div className="bg-white p-4 rounded-md text-center">
                                 <h3 className="text-xl">REPLACE ME</h3>
                                 <p>Your cart is empty</p>
@@ -40,7 +40,7 @@ const CheckOutPage = () => {
                                 <a href="/">Continue Shopping</a>
                             </div>
                             <div className="my-5">
-                                <img src={ShippingIcon} />
+                                <img src={ShippingIcon} alt="delivery truck" />
                                 <p>Free Shipping Worldwide</p>
                             </div>
                             <div className="flex flex-row justify-between">

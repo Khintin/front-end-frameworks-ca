@@ -10,7 +10,7 @@ const Review = ({ review }) => {
                 <h3 className="text-lg font-semibold mt-5">By: {review.username}</h3>
                 <div className="w-5 mt-2 flex flex-row">
                     {stars.map((idx) => (
-                        <img src={FullStar} alt="Rate Stars in Full" />
+                        <img key={idx} src={FullStar} alt="Rate Stars in Full" />
                     ))}
                 </div>
                 {review.description && review.description.length > 0 && (

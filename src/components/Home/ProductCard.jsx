@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartStore } from "../../api/cart";
 
 export default function ProductCard({ product }) {
     const { id, title, imageUrl, description, price, discountedPrice } = product;
     const { addToCart } = useCartStore((state) => ({ addToCart: state.addToCart }));
-    const [discountPercentage, setDiscountPercentage] = useState(0);
-
-    useEffect(() => {
-        if (discountedPrice < price) {
-            let discount = (1 - discountedPrice / price) * 100;
-            setDiscountPercentage(Math.floor(discount));
-        }
-    }, []);
+    const discountPercentage = Math.floor((1 - discountedPrice / price) * 100);
 
     return (
         <div key={id} className="bg-slate-300 p-4 flex flex-col gap-4 rounded-md">
             <h3 className="font-medium text-lg">{title}</h3>
             <div>
-                <img src={imageUrl} className="h-48 object-cover w-full rounded-md" />
+                <img src={imageUrl} alt={title} className="h-48 object-cover w-full rounded-md" />
             </div>
             <div className="flex flex-col">
                 <p>{description}</p>

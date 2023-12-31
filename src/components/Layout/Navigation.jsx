@@ -1,4 +1,4 @@
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Menu from "../../assets/icons8-menu-48.png";
 import { useState } from "react";
 import cart from "../../assets/icons8-cart-64.png";
@@ -49,7 +49,7 @@ export default function Navigation() {
                             className="px-4 cursor-pointer md:hidden w-14"
                             onClick={handleMobileMenuClick}
                         >
-                            <img src={Menu} />
+                            <img src={Menu} alt="hamburger icon" />
                         </div>
                     </nav>
                 </div>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProduct } from "../../api/products";
 import { useCartStore } from "../../api/cart";
@@ -29,7 +29,7 @@ export default function ProductDetailsPage() {
 
             setLoading(false);
         });
-    }, []);
+    }, [id]);
 
     if (loading) {
         return <h1>Please wait</h1>;
@@ -40,7 +40,7 @@ export default function ProductDetailsPage() {
             <>
                 <section className="flex flex-col md:flex-row max-w-7xl px-4 mx-auto gap-20 py-20 ">
                     <div>
-                        <img src={product.imageUrl} />
+                        <img src={product.imageUrl} alt={product.title} />
                     </div>
                     <div className="gap-5 flex flex-col">
                         <h1 className="text-2xl font-medium">{product.title}</h1>
@@ -65,7 +65,7 @@ export default function ProductDetailsPage() {
                 </section>
                 <section className="max-w-7xl px-4 mx-auto w-full">
                     {product.reviews.map((review) => (
-                        <Review review={review} />
+                        <Review key={review.id} review={review} />
                     ))}
                 </section>
             </>
