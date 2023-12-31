@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 
-import SaleBanner from "../../assets/salebanner.png";
+import SaleBanner from "../../assets/red-boxes-celebrating-discounts.jpg";
 import HomeProductList from "./HomeProductList";
 import { getProducts } from "../../api/products";
 import Searchbar from "./Searchbar";
 import Infobox from "../Shared/Infobox";
 
 export default function HomePage() {
-    // TODO:
-    // Fix checkout/cart page design
-    // Fix cart icon to black icon, so the white text is visible
-    // Deploy to netlfiy
-    // Fix View proeduct/add to cart buttons to be flex-col when on small screens, and center text on both
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [products, setProducts] = useState([]);

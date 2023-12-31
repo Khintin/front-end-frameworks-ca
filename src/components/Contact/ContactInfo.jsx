@@ -9,7 +9,7 @@ export default function ContactInfo() {
     return (
         <div className="flex flex-col justify-center max-w-lg mx-auto">
             <img src={ContactImage} alt="Contact image" className="w-150" />
-            <h2 className="text-lg text-red-600 text-center font-bold">eStore</h2>
+            <h2 className="text-2xl text-red-600 text-center font-bold">eStore</h2>
             <div className="flex flex-row justify-center">
                 <img src={HomeAddresIcon} alt="address icon" className="w-9" />
                 <p>Addres: 123 Street, Oslo, Norway</p>

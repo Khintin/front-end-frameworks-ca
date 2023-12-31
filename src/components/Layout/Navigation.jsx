@@ -19,7 +19,7 @@ export default function Navigation() {
                 <div className="max-w-7xl mx-auto flex flex-col text-center px-4 ">
                     <nav className="w-full py-4 flex flex-row justify-between items-center relative">
                         <Link to="/">
-                            <h2 className="font-bold text-xl text-red-400 ">eStore</h2>
+                            <h2 className="font-bold text-2xl text-red-400 ">eStore</h2>
                         </Link>
                         <ul
                             className={`${
