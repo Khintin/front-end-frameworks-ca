@@ -57,7 +57,7 @@ export default function ProductDetailsPage() {
                         <h3 className="text-medium font-semibold">{product.discountedPrice},-</h3>
                         <button
                             onClick={() => addToCart(product.id)}
-                            className="flex sm:flex-colw-max border-double border-red-400 border-4 rounded-lg hover:bg-red-400 py-1 px-4"
+                            className="flex sm:flex-col w-max border-double border-red-400 border-4 rounded-lg hover:bg-red-400 py-1 px-4"
                         >
                             Add to Cart
                         </button>
